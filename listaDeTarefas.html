@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            aplicação pra chamar de sua
+        </title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <p v-for="str in chamarDeSeu">{{str}}</p>
+
+            <input v-model="entrada"/>
+            <button @click="adicionaALista">
+                Adicionar à lista
+            </button>
+            
+        </div>
+        
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <script>
+            //apos instalar o vue, é possivel acessar a variavel Vue
+            let app = Vue.createApp({
+                data: function(){
+                    return {
+                        chamarDeSeu: ["Pode chamar de sua!"],
+                        entrada: ""
+                    }
+                },
+                methods: {
+                    adicionaALista(){
+                        this.chamarDeSeu.push(this.entrada)
+                        this.entrada = ""
+                    }
+                }
+            })
+            //montando a aplicação dentro do div "app"
+            //isso quer dizer que a instancia do vue.js
+            //criado acqui vai conseguir se conectar com
+            //qualquer elemento DOM dentro do div app
+            app.mount("#app")
+        </script>
+    </body>
+</html>
